@@ -1,8 +1,10 @@
+board = [' ' for x in range(10)]
+
 def insertSymbol(symbol, pos):
-  pass
+  board[pos] = symbol
 
  def isSpaceFree(pos):
-     pass
+     return board[pos] == ' '
 
 def displayBoard(board):
     pass
