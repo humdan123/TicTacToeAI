@@ -1,5 +1,6 @@
 board = [' ' for x in range(10)]
 
+
 def insertSymbol(symbol, pos):
   board[pos] = symbol
 
@@ -87,20 +88,19 @@ def isBoardFull(board):
         return False
       i+=1
     return True
-  
+
 def main():
     print('Welcome to Tic Tac Toe')
     displayBoard(board)
     won = False
 
-    while not (isBoardFull(board)):
+    while (not (isBoardFull(board)) and not won):
         if not (isWinner(board, 'O')):
             playerMove()
             displayBoard(board)
         else:
             print("Sorry, O's won this time!")
             won = True
-            break
 
         if not (isWinner(board, 'X')):
             move = compMove()
@@ -108,15 +108,26 @@ def main():
                 break
             else:
                 insertSymbol('O', move)
-                print("Computer places an 'O' in position :", move)
+                print("Computer places an 'O' in position: ", move)
                 displayBoard(board)
         else:
             won = True
             print("Congratulations! You won this time!")
-            break
 
     if isBoardFull(board) and not won:
         print('Tied Game!')
 
 
+
+
 main()
+run = True
+while run:
+    again = input("Would you like to play again? (y/n): ")
+    if again.lower() == 'y' or again.lower() == 'yes':
+        board = [' ' for x in range(10)]
+        main()
+    elif again.lower() == 'n' or again.lower() == 'no':
+        run = False
+    else:
+        print("Please write yes or no!")
